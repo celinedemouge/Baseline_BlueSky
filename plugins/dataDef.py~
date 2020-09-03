@@ -1,0 +1,48 @@
+import demandExtraction
+
+
+### Aircraft data file
+
+
+# Aircraft in the simulation 
+aircraft = []
+# Number of aircraft in the simulation
+nbAircraft = 0
+# Different training set for training set disruption
+l = []
+# Useful to find an flight object from the callsign
+aircraftForSearch = {}
+fuel = 0
+fuel_detail = {}
+time_detail = {}
+distance_detail = {}
+
+states = []
+index_aircraft = {}
+
+
+conflicts = 0
+
+delta_fuel = 0
+begHold = []
+nextOrd = []
+
+orders = []
+arriving = []
+done = 0
+
+order_inv = {}
+
+
+wtc = {}
+wtc_t = {("SH","H"):1.5,("SH","M"):3,("SH","L"):4,("SH","SH"):1.5,
+         ("H","H"):1.5,("H","M"):2,("H","L"):3,("H","SH"):1.5,
+         ("M","L"):3, ("M","M"):1.5, ("M","H"):1.5,("M","SH"):1.5,
+         ("L","L"):1.5,("L","M"):1.5,("L","H"):1.5,("L","SH"):1.5}
+
+
+
+merged = []
+in_holding = [[],[],[],[],[],[]]
+in_holding_g = []
+

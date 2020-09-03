@@ -1,0 +1,59 @@
+""" BlueSky plugin template. The text you put here will be visible
+    in BlueSky as the description of your plugin. """
+# Import the global bluesky objects. Uncomment the ones you need
+from bluesky import stack,traf
+import dataRL
+import dataDef as data 
+
+### Initialization function of your plugin. Do not change the name of this
+### function, as it is the way BlueSky recognises this file as a plugin.
+def init_plugin():
+
+    # Addtional initilisation code
+
+    # Configuration parameters
+    config = {
+        
+        'plugin_name':     'DEL',
+
+        
+        'plugin_type':     'sim',
+
+       
+        'update_interval': 150,
+
+       
+        'update':          update,
+
+   
+        }
+
+    stackfunctions = {
+        
+    }
+
+    # init_plugin() should always return these two dicts.
+    return config, stackfunctions
+
+
+### Periodic update functions that are called by the simulation. You can replace
+### this by anything, so long as you communicate this in init_plugin
+
+def update():
+    n = len(traf.id)
+    if n == 0:
+        return None
+    for i in range(n):
+        if abs(traf.perf.phase[i]-1)<0.1:
+            k = data.index_aircraft[traf.id[i]]
+            data.merged[k] = False
+            stack.stack("DEL {}".format(traf.id[i]))
+            
+            
+    
+
+    
+
+
+
+

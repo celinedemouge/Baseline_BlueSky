@@ -1,0 +1,70 @@
+class ScenarioCreator:
+    def __init__(self):
+        self.nbAicraft = 0
+        self.IAF = []
+        self.RWY = ""
+    def create(self):
+        rwy = input("Which RWY do you want to use ?")
+        print("You have choosen RWY {}".format(rwy))
+        self.RWY = rwy
+        
+        n = int(input("How many aircraft ?"))
+        self.nbAircraft = n
+        print("You have requested {} aircraft.".format(n))
+        
+        for i in range(n):
+            iaf = input("Which iaf for aircraft number {} ?".format(i))
+            self.IAF.append(iaf)
+            print("You have requested iaf {} for aircraft {}".format(iaf,i))
+
+    def createScenarioFile(self):
+        if self.RWY == "02":
+            createScenarioFile02(self)
+
+    def createScenarioFile02(self):
+        with open("result.scn",'w') as f:
+            for i in range(self.nbAircraft):
+                ac = "AC000{}".format(i+1)
+                if self.IAF[i] == "TOTKI" :
+                    f.write("00:00:01.11>CRE,{0},A320,40.785860,0.593547,030,25000,250 \n
+                    
+                    00:00:01.11>DEFWPT,BL636,41.0533,1.8825 \n
+                    00:00:01.11>DEFWPT,TOTKI,41.1333,1.7308 \n
+
+                    00:00:01.11>ADDWPT,{0},TOTKI,7000,220 \n
+
+
+                    00:00:02.11>ADDWPT,{0},41.1164,1.9111,5000,220 \n
+
+
+                    00:00:03.11>ADDWPT,{0},BL636,,220 \n
+
+                    00:00:03.11>LNAV {0} ON \n
+                    00:00:01.11>VNAV {0} ON \n".format(ac))
+                else :
+                    f.write("00:00:01.11>CRE,{0},A320,41.383340,5.675410,260,25000,250 \n
+                    00:00:01.11>ADDWPT,{0},VIBIM,7000,220\n
+
+
+                    00:00:02.11>ADDWPT,{0},41.0719,2.0822,5000,220\n
+
+                    00:00:03.05>DEFWPT,{0},41.0089,2.0536\n
+
+                    00:00:03.11>ADDWPT,{0},BL635,,220\n
+
+                    00:00:03.11>LNAV {0} ON\n
+                    00:00:03.11>VNAV {0} ON \n".format(ac))
+
+
+def main():
+    creator = ScenarioCreator()
+    creator.create()
+    creator.createScenarioFile()
+
+if __name__=="__main__":
+    main()
+                            
+                    
+            
+        
+    

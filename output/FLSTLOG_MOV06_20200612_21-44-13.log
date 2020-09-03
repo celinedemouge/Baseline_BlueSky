@@ -1,0 +1,9 @@
+# #######################################################
+# FLST LOG
+# Flight Statistics
+# #######################################################
+# 
+# Parameters [Units]:
+# Deletion Time [s], Call sign [-], Spawn Time [s], Flight time [s], Actual Distance 2D [nm], Actual Distance 3D [nm], Work Done [MJ], Latitude [deg], Longitude [deg], Altitude [ft], TAS [kts], Vertical Speed [fpm], Heading [deg], Origin Lat [deg], Origin Lon [deg], Destination Lat [deg], Destination Lon [deg], ASAS Active [bool], Pilot ALT [ft], Pilot SPD (TAS) [kts], Pilot HDG [deg], Pilot VS [fpm]
+# 
+# simt
